@@ -1,0 +1,14 @@
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t mianrashid/docker-react -f Dockerfile.dev . 
+
+
+script: 
+# run the image which was created in the step above
+# overide the start up command by npm run test
+# overide the default test behaviour of npm run test by -- --coverage, it will be end the test as soon as test is finished
+# travis ci will look into the exit code. anything excepts exit code (0) will be a failed build 
+  - docker run mianrashid/docker-react npm run test -- --coverage 

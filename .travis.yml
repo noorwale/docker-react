@@ -12,3 +12,16 @@ script:
 # overide the default test behaviour of npm run test by -- --coverage, it will be end the test as soon as test is finished
 # travis ci will look into the exit code. anything excepts exit code (0) will be a failed build 
   - docker run mianrashid/docker-react npm run test -- --coverage 
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: Dokcer-react
+  env: Dokcer-react-env
+  bucket_name: elasticbeanstalk-eu-north-1-381492219709
+  bucket_path: Dokcer-react
+  on:
+    branch: master
+  access_key_id: $aws_Access_key
+  secret_access_key:
+    secure: "$aws_private-key"

@@ -13,6 +13,7 @@ RUN npm run build
 ## Once the build is complete, we shall get a build folder in /app/build
 
 FROM nginx
+EXPOSE 80
 
 ## Copy from builder phase to nginx's /usr/share/nginx/html
 
